@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Ask about product",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "message": "Какие смесители есть в магазине?",
+        "mode": "consult",
+        "history": []
+      },
+      "expectedStatus": 200,
+      "expectedBody": { "reply": "string" },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Ask about sales technique",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "message": "Как правильно начать разговор с покупателем?",
+        "mode": "train",
+        "history": []
+      },
+      "expectedStatus": 200,
+      "expectedBody": { "reply": "string" },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
