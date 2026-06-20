@@ -15,7 +15,7 @@ const quickQuestions = [
   "Какие замки самые надёжные?",
 ];
 
-const BACKEND_URL_KEY = "ai-agent";
+const AI_AGENT_URL = "https://functions.poehali.dev/bd64a75d-42ea-42e8-810b-71db8f2dc07c";
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
@@ -43,10 +43,7 @@ export default function ChatPage() {
     setLoading(true);
 
     try {
-      const func2url = await import("../../func2url.json");
-      const url = func2url["ai-agent"] || func2url.default?.["ai-agent"];
-
-      const res = await fetch(url, {
+      const res = await fetch(AI_AGENT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
